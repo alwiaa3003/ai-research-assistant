@@ -22,5 +22,7 @@ Thumbs.db
 # Logs
 *.log
 
-chroma/
+chroma/*
+!chroma/Dockerfile
+
 chroma-data/
