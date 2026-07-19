@@ -1,7 +1,9 @@
 import { ChromaClient } from "chromadb";
 import { getGeminiClient } from "../config/gemini.js";
 
-const chroma = new ChromaClient({ path: "http://localhost:8000" });
+const chroma = new ChromaClient({
+  path: process.env.CHROMA_URL || "http://localhost:8000",
+});
 const COLLECTION_NAME = "stock_documents";
 
 let _collection = null;
