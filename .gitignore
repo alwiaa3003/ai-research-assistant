@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+frontend/.env
+backend/.env
+
+# Uploaded PDFs
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Build files
+dist/
+frontend/dist/
+backend/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
