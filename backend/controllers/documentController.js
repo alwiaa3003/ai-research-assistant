@@ -8,6 +8,7 @@ import {
   reindexDocument as reindexInStore,
   hasIndexedChunks,
 } from "../rag/vectorStore.js";
+import Document from "../models/Document.js";
 
 const DOCUMENTS_DIR = process.env.DOCUMENTS_DIR || path.resolve("uploads/documents");
 
