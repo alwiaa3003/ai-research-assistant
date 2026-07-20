@@ -14,16 +14,7 @@ const chroma = new ChromaClient({
   ssl: url.protocol === "https:",
 });
 
-try {
-  console.log("CHROMA_URL:", process.env.CHROMA_URL);
-  console.log("Version:", await chroma.version());
-  console.log("Collections:", await chroma.listCollections());
-} catch (err) {
-  console.error("===== CHROMA ERROR =====");
-  console.error(err);
-  console.error(err.stack);
-  console.error("========================");
-}
+
 
 let _collection = null;
 
