@@ -4,7 +4,9 @@ import { getEmbeddings } from "./embeddings.js";
 const CHROMA_URL = process.env.CHROMA_URL || "http://localhost:8000";
 const COLLECTION_NAME = process.env.CHROMA_COLLECTION || "stock_documents";
 
-const chroma = new ChromaClient({ path: CHROMA_URL });
+const chroma = new ChromaClient({
+  path: process.env.CHROMA_URL || "http://localhost:8000",
+});
 
 let _collection = null;
 
@@ -16,7 +18,10 @@ let _collection = null;
 const getCollection = async () => {
   if (!_collection) {
     try {
-      _collection = await chroma.getOrCreateCollection({ name: COLLECTION_NAME });
+      _collection = await chroma.getOrCreateCollection({
+          name: COLLECTION_NAME,
+          embeddingFunction: null
+      });
       console.log(`[vectorStore] Connected to Chroma collection "${COLLECTION_NAME}" at ${CHROMA_URL}`);
     } catch (error) {
       throw new Error(
