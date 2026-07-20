@@ -41,10 +41,14 @@ const getCollection = async () => {
       });
       console.log(`[vectorStore] Connected to Chroma collection "${COLLECTION_NAME}" at ${CHROMA_URL}`);
     } catch (error) {
-      throw new Error(
+    console.error("FULL CHROMA ERROR:");
+    console.error(error);
+    console.error(error.stack);
+
+    throw new Error(
         `Could not connect to Chroma at ${CHROMA_URL}. Is "chroma run" running? (${error.message})`
-      );
-    }
+    );
+} 
   }
   return _collection;
 };
