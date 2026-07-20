@@ -4,8 +4,14 @@ import { getEmbeddings } from "./embeddings.js";
 const CHROMA_URL = process.env.CHROMA_URL || "http://localhost:8000";
 const COLLECTION_NAME = process.env.CHROMA_COLLECTION || "stock_documents";
 
+const url = new URL(
+  process.env.CHROMA_URL || "http://localhost:8000"
+);
+
 const chroma = new ChromaClient({
-  path: process.env.CHROMA_URL || "http://localhost:8000",
+  host: url.hostname,
+  port: Number(url.port || (url.protocol === "https:" ? 443 : 80)),
+  ssl: url.protocol === "https:",
 });
 
 let _collection = null;
